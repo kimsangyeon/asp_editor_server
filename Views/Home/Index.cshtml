@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<environment include="" ="Development">
+    <link href="~/css/synapeditor.css" rel="stylesheet" type="text/css">
+    <script src="~/js/synapeditor.js"></script>
+</environment>
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Use this area to provide additional information.</p>
+<div id="synapEditor" class="container"></div>
+
+<environment include="Development">
+    <script language=javascript>
+        window.editor = new SynapEditor('synapEditor');
+    </script>
+</environment>
