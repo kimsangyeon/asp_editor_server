@@ -32,15 +32,14 @@ namespace asp_editor_server.Controllers
             var uploadFile = file[0];
             string fileName = Path.GetFileName(uploadFile.FileName);
             string ext = Path.GetExtension(fileName);
-            var filePath = Path.Combine("uploads", fileName);
-            var uploadUrl = Path.Combine(Directory.GetCurrentDirectory(), filePath);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            var uploadPath = Path.Combine("uploads", fileName);
+            
+            using (var stream = new FileStream(uploadPath, FileMode.Create))
             {
                 await uploadFile.CopyToAsync(stream);
             }
 
-            return Ok(new { count = file.Count, size, filePath });
+            return Ok(new { count = file.Count, size, uploadPath });
         }
     }
 }
